@@ -45,6 +45,8 @@ function ShoppingCartApp() {
                   size={'md'}
                   aria-label={'Open Menu'}
                   display={{ md: 'none' }}
+                  variant="outline"
+                  colorPalette="blue"
                 >
                   <MdMenu />
                 </IconButton>
@@ -78,11 +80,11 @@ function ShoppingCartApp() {
                 ))}
               </HStack>
             </HStack>
-            <Flex alignItems={'center'}>
+            <Flex alignItems="center">
               <Button
-                variant={'solid'}
-                colorPalette={'teal'}
-                size={'sm'}
+                variant="outline"
+                colorPalette="blue"
+                size="sm"
                 mr={4}
               >
                 <MdAdd /> Action
