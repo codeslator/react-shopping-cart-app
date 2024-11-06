@@ -1,9 +1,10 @@
 import { MainLayout } from "@/views/layouts"
+import { Router } from "@/router"
 
 function ShoppingCartApp() {
   return (
     <MainLayout>
-      <p>Hello World</p>
+      <Router />
     </MainLayout>
   )
 }
