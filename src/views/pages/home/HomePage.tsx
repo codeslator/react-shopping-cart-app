@@ -1,11 +1,10 @@
 import { FC } from 'react';
-import { ProductList } from './components';
+import { GuitarList } from './components';
 
 const HomePage: FC = () => {
   return (
     <div>
-      <ProductList />
-      
+      <GuitarList />
     </div>
   );
 };

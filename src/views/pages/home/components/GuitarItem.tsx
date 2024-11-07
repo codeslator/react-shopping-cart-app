@@ -1,14 +1,14 @@
 import { FC } from 'react';
 import { Box, Card, Image } from "@chakra-ui/react"
 import { Button } from "@/components/ui/button"
-import { Product } from '@/global/interfaces';
+import { Guitar } from '@/global/interfaces';
 
-interface ProductItemProps {
-  product?: Product;
+interface GuitarItemProps {
+  guitar?: Guitar;
 }
 
-const ProductItem: FC<ProductItemProps> = ({ product }) => {
-  console.log(product)
+const GuitarItem: FC<GuitarItemProps> = ({ guitar }) => {
+  console.log(guitar)
   return (
     <Card.Root flexDirection="row" overflow="hidden" maxW="xl">
       <Image
@@ -26,11 +26,12 @@ const ProductItem: FC<ProductItemProps> = ({ product }) => {
           </Card.Description>
         </Card.Body>
         <Card.Footer>
-          <Button>Buy Latte</Button>
+          <Button size="sm">Details</Button>
+          <Button size="sm">Add to Cart</Button>
         </Card.Footer>
       </Box>
     </Card.Root>
   );
 };
 
-export default ProductItem;
+export default GuitarItem;

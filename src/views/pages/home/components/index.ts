@@ -1,2 +1,2 @@
-export { default as ProductItem } from "./ProductItem";
-export { default as ProductList } from "./ProductList";
+export { default as GuitarItem } from "./GuitarItem";
+export { default as GuitarList } from "./GuitarList";

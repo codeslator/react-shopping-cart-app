@@ -1,8 +1,8 @@
 import { FC } from 'react';
 import { Grid, GridItem, Text } from "@chakra-ui/react"
-import ProductItem from './ProductItem';
+import GuitarItem from './GuitarItem';
 
-const ProductList: FC = () => {
+const GuitarList: FC = () => {
   return (
     <>
       <Text textStyle="3xl" mb={4}>Our Guitar Collection</Text>
@@ -11,20 +11,20 @@ const ProductList: FC = () => {
         gap="6"
       >
         <GridItem>
-          <ProductItem />
+          <GuitarItem />
         </GridItem>
         <GridItem>
-          <ProductItem />
+          <GuitarItem />
         </GridItem>
         <GridItem>
-          <ProductItem />
+          <GuitarItem />
         </GridItem>
         <GridItem>
-          <ProductItem />
+          <GuitarItem />
         </GridItem>
       </Grid>
     </>
   );
 };
 
-export default ProductList;
+export default GuitarList;
