@@ -21,7 +21,7 @@ const Links = ['Dashboard', 'Projects', 'Team']
 
 const Header: FC = () => {
   return (
-    <Box as="header" bg="gray.900" flexShrink={0} flexGrow={0} flexBasis="auto">
+    <Box as="header" bg="gray.900">
       <Container fluid>
         <Flex h={16} alignItems="center" justifyContent="space-between">
           <HStack gap={8} alignItems="center">

@@ -4,7 +4,7 @@ import { FaGithub, FaInstagram, FaFacebook, FaLinkedin } from "react-icons/fa";
 
 const Footer: FC = () => {
   return (
-    <Box as="footer" bg="gray.900" flexShrink={0} flexGrow={0} flexBasis="auto">
+    <Box as="footer" bg="gray.900">
       <Container fluid py={4}>
         <Box
           display="flex"

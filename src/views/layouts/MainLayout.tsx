@@ -10,7 +10,7 @@ const MainLayout: FC<MainLayoutProps> = ({ children }) => {
   return (
     <Box minH="100vh" display="flex" flexDirection="column">
       <Header />
-      <Box as="main" p={4} h="100%" flexShrink={0} flexGrow={1} flexBasis="auto">
+      <Box as="main" p={4} h="100%">
         {children}
       </Box>
       <Footer />

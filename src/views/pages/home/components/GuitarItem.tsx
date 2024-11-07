@@ -1,31 +1,33 @@
 import { FC } from 'react';
-import { Box, Card, Image } from "@chakra-ui/react"
+import { Box, Card, Image, Text } from "@chakra-ui/react"
 import { Button } from "@/components/ui/button"
 import { Guitar } from '@/global/interfaces';
 
 interface GuitarItemProps {
-  guitar?: Guitar;
+  guitar: Guitar;
 }
 
 const GuitarItem: FC<GuitarItemProps> = ({ guitar }) => {
-  console.log(guitar)
+  const { image, name, description, price } = guitar;
   return (
-    <Card.Root flexDirection="row" overflow="hidden" maxW="xl">
+    <Card.Root flexDirection="row" overflow="hidden">
       <Image
-        objectFit="cover"
-        maxW="200px"
-        src="https://images.unsplash.com/photo-1667489022797-ab608913feeb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw5fHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=800&q=60"
-        alt="Caffe Latte"
+        objectFit="contain"
+        maxW="150px"
+        src={image}
+        alt={name}
       />
       <Box>
         <Card.Body>
-          <Card.Title mb="2">The perfect latte</Card.Title>
+          <Card.Title mb="2">{name}</Card.Title>
           <Card.Description>
-            Caffè latte is a coffee beverage of Italian origin made with espresso
-            and steamed milk.
+            {description}
+            <Text textStyle="2xl" fontWeight="medium" letterSpacing="tight" mt="2">
+              ${price}
+            </Text>
           </Card.Description>
         </Card.Body>
-        <Card.Footer>
+        <Card.Footer position="absolute" bottom={0}>
           <Button size="sm">Details</Button>
           <Button size="sm">Add to Cart</Button>
         </Card.Footer>
