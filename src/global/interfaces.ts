@@ -4,5 +4,6 @@ export interface Guitar {
   description: string;
   price: number;
   image: string;
+  quantity: number;
   created_at: Date;
 }
