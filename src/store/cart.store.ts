@@ -7,12 +7,13 @@ interface CartState {
   add: (guitar: Guitar) => void;
   remove: (id: number) => void;
   removeAll: () => void;
-  // increment: (guitar: Guitar) => void;
-  // decrement: (guitar: Guitar) => void;
+  increment: (id: number) => void;
+  decrement: (id: number) => void;
 }
 
 const storeAPI: StateCreator<CartState> = (set, get) => ({
   cart: [],
+  total: 0,
   add: (guitar: Guitar) => {
     const currentCart = get().cart;
     const itemExist = currentCart.findIndex((currentGuitar) => (currentGuitar.id === guitar.id));
@@ -21,35 +22,44 @@ const storeAPI: StateCreator<CartState> = (set, get) => ({
       if (cart[itemExist].quantity) {
         cart[itemExist].quantity += 1;
       }
-      set({ cart })
+      set({ cart });
     }
     else {
       guitar.quantity = 1;
-      set({ cart: [...currentCart, guitar] })
+      set({ cart: [...currentCart, guitar] });
     }
   },
   remove: (id: number) => {
-    const cart = get().cart.filter((product) => (product.id !== id));
-    set({ cart: cart })
+    const cart = get().cart.filter((guitar) => (guitar.id !== id));
+    set({ cart });
   },
   removeAll: () => {
-    set({ cart: [] })
+    set({ cart: [] });
   },
-  // increment: (guitar: Guitar) => {
-  //   const currentCart = get().cart;
-  //   const currentGuitarIndex = currentCart.findIndex((currentGuitar) => (currentGuitar.id === guitar.id));
-  //   if (currentGuitarIndex >= 0) {
-  //     const cart = [...currentCart];
-  //     if (cart[currentGuitarIndex].quantity) {
-  //       cart[currentGuitarIndex].quantity += 1;
-  //     }
-  //     set({ cart })
-  //   }
-  // },
-  // decrement: (guitar: Guitar) => {
-  //   set({ cart: [] })
-  // },
-
+  increment: (id: number) => {
+    const cart = get().cart.map((guitar: Guitar) => {
+      if (guitar.id === id) {
+        return {
+          ...guitar,
+          quantity: guitar.quantity + 1,
+        }
+      }
+      return guitar;
+    });
+    set({ cart });
+  },
+  decrement: (id: number) => {
+    const cart = get().cart.map((guitar: Guitar) => {
+      if (guitar.id === id && guitar.quantity > 1) {
+        return {
+          ...guitar,
+          quantity: guitar.quantity - 1,
+        }
+      }
+      return guitar;
+    });
+    set({ cart });
+  },
 });
 
 export const useCartStore = create<CartState>()((

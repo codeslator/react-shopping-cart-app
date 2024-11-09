@@ -1,6 +1,6 @@
-import { FC, Fragment } from 'react';
+import { FC, Fragment, useMemo } from 'react';
 import { IconButton, HStack, Box, Text, Image, Group, Separator } from '@chakra-ui/react';
-import { MdAdd, MdAddShoppingCart, MdRemove } from "react-icons/md";
+import { MdAdd, MdAddShoppingCart, MdRemove, MdDelete } from "react-icons/md";
 import {
   DrawerBackdrop,
   DrawerBody,
@@ -12,6 +12,7 @@ import {
   DrawerTitle,
   DrawerTrigger,
 } from "@/components/ui/drawer";
+import { StatLabel, StatRoot, StatValueText } from '@/components/ui/stat';
 import { useCartStore } from '@/store';
 import { Button } from '@/components/ui/button';
 import { EmptyState } from '@/components/ui/empty-state';
@@ -19,7 +20,13 @@ import { LuShoppingCart } from 'react-icons/lu';
 
 const ShoppingCart: FC = () => {
   const cart = useCartStore((state) => state.cart);
+  const remove = useCartStore((state) => state.remove);
   const removeAll = useCartStore((state) => state.removeAll);
+  const increment = useCartStore((state) => state.increment);
+  const decrement = useCartStore((state) => state.decrement);
+
+  const isEmpty = useMemo(() => cart.length === 0, [cart]);
+  const total = useMemo(() => cart.reduce((acc: number, currentGuitar) => acc + (currentGuitar.price * currentGuitar.quantity), 0), [cart]);
 
   return (
     <DrawerRoot placement="end" size="lg">
@@ -40,7 +47,7 @@ const ShoppingCart: FC = () => {
           <DrawerTitle>Shopping Cart</DrawerTitle>
         </DrawerHeader>
         <DrawerBody as="nav">
-          {(cart.length > 0) ? (
+          {(!isEmpty) ? (
             <>
               {cart.map(({ id, name, quantity, image, price }) => (
                 <Fragment key={id}>
@@ -49,26 +56,44 @@ const ShoppingCart: FC = () => {
                       height="64px"
                       src={image}
                       alt={name}
-                      border="solid 1px #86efac"
+                      border="solid 1px #27272a"
                       rounded="md"
                       w="84px"
                       fit="contain"
                     />
                     <Box w="100%" px={2}>
-                      <Text textStyle="lg">{name}</Text>
+                      <Text textStyle="lg">Guitar {name}</Text>
                       <Text>${price}</Text>
                     </Box>
                     <Group attached>
-                      <IconButton variant="outline" colorPalette="green" size="sm">
+                      <IconButton
+                        variant="outline"
+                        colorPalette="green"
+                        size="sm"
+                        onClick={() => decrement(id)}
+                      >
                         <MdRemove />
                       </IconButton>
                       <Button variant="outline" colorPalette="green" size="sm">
                         {quantity}
                       </Button>
-                      <IconButton variant="outline" colorPalette="green" size="sm">
+                      <IconButton
+                        variant="outline"
+                        colorPalette="green"
+                        size="sm"
+                        onClick={() => increment(id)}
+                      >
                         <MdAdd />
                       </IconButton>
                     </Group>
+                    <IconButton
+                      variant="outline"
+                      colorPalette="red"
+                      size="sm"
+                      onClick={() => remove(id)}
+                    >
+                      <MdDelete />
+                    </IconButton>
                   </HStack>
                   <Separator my={2} />
                 </Fragment>
@@ -82,8 +107,20 @@ const ShoppingCart: FC = () => {
             />
           )}
         </DrawerBody>
-        <DrawerFooter>
-          <Button variant="outline" colorPalette="red" onClick={removeAll}>Remove All</Button>
+        <DrawerFooter display="flex" direction="row" alignItems="flex-end">
+          <StatRoot size="sm">
+            <StatLabel>Total</StatLabel>
+            <StatValueText
+              value={total}
+              formatOptions={{ style: "currency", currency: "USD" }}
+            />
+          </StatRoot>
+          {(!isEmpty) && (
+            <>
+              <Button variant="outline" colorPalette="green">Purchase</Button>
+              <Button variant="outline" colorPalette="red" onClick={removeAll}>Remove All</Button>
+            </>
+          )}
         </DrawerFooter>
         <DrawerCloseTrigger />
       </DrawerContent>
