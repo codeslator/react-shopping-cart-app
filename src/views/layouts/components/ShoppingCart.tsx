@@ -12,6 +12,17 @@ import {
   DrawerTitle,
   DrawerTrigger,
 } from "@/components/ui/drawer";
+import {
+  DialogActionTrigger,
+  DialogBody,
+  DialogCloseTrigger,
+  DialogContent,
+  DialogFooter,
+  DialogHeader,
+  DialogRoot,
+  DialogTitle,
+  DialogTrigger,
+} from '@/components/ui/dialog'
 import { StatLabel, StatRoot, StatValueText } from '@/components/ui/stat';
 import { useCartStore } from '@/store';
 import { Button } from '@/components/ui/button';
@@ -118,7 +129,28 @@ const ShoppingCart: FC = () => {
           {(!isEmpty) && (
             <>
               <Button variant="outline" colorPalette="green">Purchase</Button>
-              <Button variant="outline" colorPalette="red" onClick={removeAll}>Remove All</Button>
+              <DialogRoot placement="center">
+                <DialogTrigger asChild>
+                  <Button variant="outline" colorPalette="red">Remove All</Button>
+                </DialogTrigger>
+                <DialogContent>
+                  <DialogHeader>
+                    <DialogTitle>Remove all products?</DialogTitle>
+                  </DialogHeader>
+                  <DialogBody>
+                    <p>
+                      Are you sure that you want to remove all guitars? This action can't be undone. Click "Yes" to confirm.
+                    </p>
+                  </DialogBody>
+                  <DialogFooter>
+                    <DialogActionTrigger asChild>
+                      <Button variant="outline">Cancel</Button>
+                    </DialogActionTrigger>
+                    <Button variant="outline" colorPalette="red" onClick={removeAll}>Yes</Button>
+                  </DialogFooter>
+                  <DialogCloseTrigger />
+                </DialogContent>
+              </DialogRoot>
             </>
           )}
         </DrawerFooter>

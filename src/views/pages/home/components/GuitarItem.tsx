@@ -16,7 +16,7 @@ const GuitarItem: FC<GuitarItemProps> = ({ guitar }) => {
   const addToCart = () => {
     add(guitar);
     toaster.create({
-      title: `Guitar ${name} added to cart successfully.`,
+      title: `Guitar ${name} added to cart.`,
       type: 'success'
     });
   };
