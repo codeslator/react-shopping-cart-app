@@ -47,7 +47,7 @@ const ShoppingCart: FC = () => {
           size="md"
           aria-label="Open Menu"
           variant="outline"
-          colorPalette="green"
+          colorPalette="teal"
           mr={4}
         >
           <MdAddShoppingCart />
