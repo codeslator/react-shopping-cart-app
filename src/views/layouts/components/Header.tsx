@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import { Link } from "wouter"
 import {
   Box,
@@ -29,6 +29,12 @@ const links = [
 ]
 
 const Header: FC = () => {
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
+
+  const handleLogin = () => {
+    setIsAuthenticated(!isAuthenticated);
+  }
+
   return (
     <Box as="header" bg="gray.900">
       <Container fluid>
@@ -47,16 +53,28 @@ const Header: FC = () => {
           </HStack>
           <Flex alignItems="center">
             <ShoppingCart />
-            <MenuRoot positioning={{ placement: "bottom-end" }}>
-              <MenuTrigger>
-                <Avatar name="Segun Adebayo" src="https://bit.ly/sage-adebayo" cursor="pointer" />
-              </MenuTrigger>
-              <MenuContent>
-                {links.map(({ label, to }) => (
-                  <MenuItem value={label} key={to} cursor="pointer">{label}</MenuItem>
-                ))}
-              </MenuContent>
-            </MenuRoot>
+            <Button variant="solid" colorPalette="teal" onClick={handleLogin}>
+              Sign In
+            </Button>
+            {isAuthenticated ? (
+              <MenuRoot positioning={{ placement: "bottom-end" }}>
+                <MenuTrigger>
+                  <Avatar name="Segun Adebayo" src="https://bit.ly/sage-adebayo" cursor="pointer" />
+                </MenuTrigger>
+                <MenuContent>
+                  {links.map(({ label, to }) => (
+                    <MenuItem value={label} key={to} cursor="pointer">{label}</MenuItem>
+                  ))}
+                </MenuContent>
+              </MenuRoot>
+            ) : (
+              <HStack gap={2}>
+
+                <Button variant="outline" colorPalette="teal">
+                  Sign Up
+                </Button>
+              </HStack>
+            )}
           </Flex>
         </Flex>
       </Container>

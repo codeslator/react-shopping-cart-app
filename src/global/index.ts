@@ -5,5 +5,9 @@ export enum PATHS {
   ROOT = '/',
   HOME = '/home',
   CHECKOUT = '/checkout',
-  GUITAR = '/guitar'
+  GUITAR = '/guitar',
+  AUTH = '/auth',
+  SIGN_IN = '/sign-in',
+  LOGIN = '/login',
+  SIGN_UP = '/sign-up',
 };
