@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { HomePage, SignInPage } from '@/views';
+import { HomePage, NotFound, SignInPage } from '@/views';
 import { Route, Switch } from "wouter";
 import { PATHS } from '@/global';
 
@@ -13,7 +13,7 @@ const Router: FC = () => {
         <Route path={PATHS.SIGN_IN} component={SignInPage} />
         <Route path={PATHS.SIGN_UP} component={SignInPage} />
       </Route>
-      <Route>Error</Route>
+      <Route path="*" component={NotFound} />
     </Switch>
   );
 };
