@@ -11,3 +11,11 @@ export enum PATHS {
   LOGIN = '/login',
   SIGN_UP = '/sign-up',
 };
+
+export enum ROUTES {
+  ROOT = '/',
+  HOME = '/home',
+  CHECKOUT = '/checkout',
+  SIGN_IN = '/auth/sign-in',
+  SIGN_UP = '/auth/sign-up',
+};

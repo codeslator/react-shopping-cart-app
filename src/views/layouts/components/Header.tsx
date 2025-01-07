@@ -1,5 +1,5 @@
 import { FC, useState } from 'react';
-import { Link } from "wouter"
+import { Link } from "wouter";
 import {
   Box,
   Flex,
@@ -19,12 +19,12 @@ import {
 import { Avatar } from "@/components/ui/avatar";
 import ShoppingCart from './ShoppingCart';
 import CodeslatorLogo from '@/assets/codeslator_logo.svg';
-import { environment, PATHS } from '@/global';
+import { environment, ROUTES } from '@/global';
 
 const links = [
   {
     label: 'Home',
-    to: PATHS.HOME
+    to: ROUTES.HOME
   },
 ]
 
@@ -53,9 +53,6 @@ const Header: FC = () => {
           </HStack>
           <Flex alignItems="center">
             <ShoppingCart />
-            <Button variant="solid" colorPalette="teal" onClick={handleLogin}>
-              Sign In
-            </Button>
             {isAuthenticated ? (
               <MenuRoot positioning={{ placement: "bottom-end" }}>
                 <MenuTrigger>
@@ -69,9 +66,11 @@ const Header: FC = () => {
               </MenuRoot>
             ) : (
               <HStack gap={2}>
-
-                <Button variant="outline" colorPalette="teal">
-                  Sign Up
+                <Button variant="solid" colorPalette="teal" asChild>
+                  <Link href={ROUTES.SIGN_IN}>Sign Up</Link>
+                </Button>
+                <Button variant="outline" colorPalette="teal" asChild>
+                  <Link href={ROUTES.SIGN_UP}>Sign Up</Link>
                 </Button>
               </HStack>
             )}

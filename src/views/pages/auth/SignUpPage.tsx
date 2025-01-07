@@ -1,8 +1,12 @@
 import { FC } from 'react';
+import { AuthLayout } from '@/views/layouts';
+import { SignUpForm } from './components';
 
 const SignUpPage: FC = () => {
   return (
-    <div>SignUpPage</div>
+    <AuthLayout>
+      <SignUpForm />
+    </AuthLayout>
   );
 };
 

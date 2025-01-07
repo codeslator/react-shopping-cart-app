@@ -44,14 +44,14 @@ const GuitarItem: FC<GuitarItemProps> = ({ guitar }) => {
             <Button
               size="sm"
               variant="outline"
-              colorPalette="blue"
+              colorPalette="teal"
             >
               Details
             </Button>
             <Button
               size="sm"
               variant="outline"
-              colorPalette="green"
+              colorPalette="orange"
               onClick={addToCart}
             >
               Add to Cart

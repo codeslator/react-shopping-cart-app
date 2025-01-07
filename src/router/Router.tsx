@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { HomePage, NotFound, SignInPage } from '@/views';
+import { HomePage, NotFound, SignInPage, SignUpPage } from '@/views';
 import { Route, Switch } from "wouter";
 import { PATHS } from '@/global';
 
@@ -11,7 +11,7 @@ const Router: FC = () => {
       <Route path={PATHS.HOME} component={HomePage} />
       <Route path={PATHS.AUTH} nest>
         <Route path={PATHS.SIGN_IN} component={SignInPage} />
-        <Route path={PATHS.SIGN_UP} component={SignInPage} />
+        <Route path={PATHS.SIGN_UP} component={SignUpPage} />
       </Route>
       <Route path="*" component={NotFound} />
     </Switch>
