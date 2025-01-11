@@ -8,10 +8,11 @@ interface GuitarState {
   getAll: () => void;
 }
 
-const storeAPI: StateCreator<GuitarState> = (set) => ({
+const storeAPI: StateCreator<GuitarState> = (set, get) => ({
   guitars: [],
   getAll: async () => {
     try {
+      if (get().guitars.length !== 0) return;
       const guitars = await GuitarService.getAll();
       set({ guitars });
     } catch (err) {

@@ -1,5 +1,5 @@
 import { FC, Fragment, useMemo } from 'react';
-import { IconButton, HStack, Box, Text, Image, Group, Separator } from '@chakra-ui/react';
+import { IconButton, HStack, Box, Text, Image, Group, Separator, Link } from '@chakra-ui/react';
 import { MdAdd, MdAddShoppingCart, MdRemove, MdDelete } from "react-icons/md";
 import {
   DrawerBackdrop,
@@ -28,6 +28,7 @@ import { useCartStore } from '@/store';
 import { Button } from '@/components/ui/button';
 import { EmptyState } from '@/components/ui/empty-state';
 import { LuShoppingCart } from 'react-icons/lu';
+import { ROUTES } from '@/global';
 
 const ShoppingCart: FC = () => {
   const cart = useCartStore((state) => state.cart);
@@ -128,7 +129,9 @@ const ShoppingCart: FC = () => {
           </StatRoot>
           {(!isEmpty) && (
             <>
-              <Button variant="outline" colorPalette="green">Purchase</Button>
+              <Button variant="outline" colorPalette="teal" asChild>
+                <Link href={ROUTES.CHECKOUT}>Purchase</Link>
+              </Button>
               <DialogRoot placement="center">
                 <DialogTrigger asChild>
                   <Button variant="outline" colorPalette="red">Remove All</Button>

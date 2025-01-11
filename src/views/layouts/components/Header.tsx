@@ -1,4 +1,4 @@
-import { FC, useState } from 'react';
+import { FC } from 'react';
 import { Link } from "wouter";
 import {
   Box,
@@ -10,13 +10,6 @@ import {
 import {
   Button,
 } from "@/components/ui/button";
-import {
-  MenuContent,
-  MenuItem,
-  MenuRoot,
-  MenuTrigger,
-} from "@/components/ui/menu";
-import { Avatar } from "@/components/ui/avatar";
 import ShoppingCart from './ShoppingCart';
 import CodeslatorLogo from '@/assets/codeslator_logo.svg';
 import { environment, ROUTES } from '@/global';
@@ -29,12 +22,6 @@ const links = [
 ]
 
 const Header: FC = () => {
-  const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
-
-  const handleLogin = () => {
-    setIsAuthenticated(!isAuthenticated);
-  }
-
   return (
     <Box as="header" bg="gray.900">
       <Container fluid>
@@ -53,27 +40,14 @@ const Header: FC = () => {
           </HStack>
           <Flex alignItems="center">
             <ShoppingCart />
-            {isAuthenticated ? (
-              <MenuRoot positioning={{ placement: "bottom-end" }}>
-                <MenuTrigger>
-                  <Avatar name="Segun Adebayo" src="https://bit.ly/sage-adebayo" cursor="pointer" />
-                </MenuTrigger>
-                <MenuContent>
-                  {links.map(({ label, to }) => (
-                    <MenuItem value={label} key={to} cursor="pointer">{label}</MenuItem>
-                  ))}
-                </MenuContent>
-              </MenuRoot>
-            ) : (
-              <HStack gap={2}>
-                <Button variant="solid" colorPalette="teal" asChild>
-                  <Link href={ROUTES.SIGN_IN}>Sign Up</Link>
-                </Button>
-                <Button variant="outline" colorPalette="teal" asChild>
-                  <Link href={ROUTES.SIGN_UP}>Sign Up</Link>
-                </Button>
-              </HStack>
-            )}
+            <HStack gap={2}>
+              <Button variant="solid" colorPalette="teal" asChild>
+                <Link href={ROUTES.SIGN_IN}>Sign Up</Link>
+              </Button>
+              <Button variant="outline" colorPalette="teal" asChild>
+                <Link href={ROUTES.SIGN_UP}>Sign Up</Link>
+              </Button>
+            </HStack>
           </Flex>
         </Flex>
       </Container>

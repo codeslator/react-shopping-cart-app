@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { Box, Card, Stack, Image, Text } from '@chakra-ui/react'
+import { Box, Card, Stack, Image, Text } from '@chakra-ui/react';
 import { toaster } from '@/components/ui/toaster'
 import { Button } from '@/components/ui/button'
 import { Guitar } from '@/global/interfaces';
@@ -45,13 +45,6 @@ const GuitarItem: FC<GuitarItemProps> = ({ guitar }) => {
               size="sm"
               variant="outline"
               colorPalette="teal"
-            >
-              Details
-            </Button>
-            <Button
-              size="sm"
-              variant="outline"
-              colorPalette="orange"
               onClick={addToCart}
             >
               Add to Cart
