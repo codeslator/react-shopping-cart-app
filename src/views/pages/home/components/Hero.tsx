@@ -7,6 +7,7 @@ import {
   Button,
   HStack
 } from '@chakra-ui/react'
+import { environment } from '@/global';
 
 const Hero: FC = () => {
   return (
@@ -19,10 +20,10 @@ const Hero: FC = () => {
         <Heading
           fontWeight={600}
           fontSize={{ base: '3xl', sm: '4xl', md: '6xl' }}
-          >
-          Meeting scheduling{' '}
+        >
+          Shopping Cart App{' - '}
           <Text as="span" color="teal.400">
-            made easy
+            React
           </Text>
         </Heading>
         <Text color="gray.500" maxW="3xl">
@@ -31,11 +32,10 @@ const Hero: FC = () => {
           every morning.
         </Text>
         <HStack>
-          <Button colorPalette="teal" variant="outline">
-            See GitHub Repo
-          </Button>
-          <Button colorPalette="orange" variant="outline">
-            Learn more
+          <Button colorPalette="teal" variant="outline" asChild>
+            <a href={environment.GITHUB_REPO_URL} target="_blank">
+              See GitHub Repo
+            </a>
           </Button>
         </HStack>
       </Stack>

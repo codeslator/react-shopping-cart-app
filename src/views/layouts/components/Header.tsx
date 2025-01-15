@@ -42,7 +42,7 @@ const Header: FC = () => {
             <ShoppingCart />
             <HStack gap={2}>
               <Button variant="solid" colorPalette="teal" asChild>
-                <Link href={ROUTES.SIGN_IN}>Sign Up</Link>
+                <Link href={ROUTES.SIGN_IN}>Sign In</Link>
               </Button>
               <Button variant="outline" colorPalette="teal" asChild>
                 <Link href={ROUTES.SIGN_UP}>Sign Up</Link>
