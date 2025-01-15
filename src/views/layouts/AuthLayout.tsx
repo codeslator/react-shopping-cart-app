@@ -1,13 +1,23 @@
 import { FC, ReactNode } from 'react';
-import { Flex, Stack, Image  } from '@chakra-ui/react';
+import { Flex, Stack, Image, Box, Button } from '@chakra-ui/react';
 
 interface AuthLayoutProps {
   children: ReactNode;
 }
 
 const AuthLayout: FC<AuthLayoutProps> = ({ children }) => {
+
+  const goBack = () => {
+    history.back();
+  }
+
   return (
     <Stack minH="100vh" direction={{ base: 'column', md: 'row' }}>
+      <Box position="absolute" top="4" left="4">
+        <Button colorPalette="orange" variant="outline" onClick={goBack}>
+          Go Back
+        </Button>
+      </Box>
       <Flex p={8} flex={1} align="center" justify="center">
         {children}
       </Flex>

@@ -3,7 +3,8 @@ import { Box, Card, Stack, Image, Text } from '@chakra-ui/react';
 import { toaster } from '@/components/ui/toaster'
 import { Button } from '@/components/ui/button'
 import { Guitar } from '@/global/interfaces';
-import { useCartStore } from '@/store';
+import { useCart } from '@/hooks';
+import { Rating } from '@/components/ui/rating';
 
 interface GuitarItemProps {
   guitar: Guitar;
@@ -11,7 +12,7 @@ interface GuitarItemProps {
 
 const GuitarItem: FC<GuitarItemProps> = ({ guitar }) => {
   const { image, name, description, price } = guitar;
-  const add = useCartStore((state) => state.add);
+  const { add, rating } = useCart();
 
   const addToCart = () => {
     add(guitar);
@@ -38,8 +39,9 @@ const GuitarItem: FC<GuitarItemProps> = ({ guitar }) => {
               ${price}
             </Text>
           </Card.Description>
+          <Rating readOnly defaultValue={rating} mt={4} colorPalette="orange" />
         </Card.Body>
-        <Card.Footer position="absolute" bottom={0}>
+        <Card.Footer>
           <Stack direction={{ base: "column", md: "row" }}>
             <Button
               size="sm"

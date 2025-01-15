@@ -1,4 +1,4 @@
-import { FC, Fragment, useMemo } from 'react';
+import { FC, Fragment } from 'react';
 import { IconButton, HStack, Box, Text, Image, Group, Separator, Link } from '@chakra-ui/react';
 import { MdAdd, MdAddShoppingCart, MdRemove, MdDelete } from "react-icons/md";
 import {
@@ -24,21 +24,14 @@ import {
   DialogTrigger,
 } from '@/components/ui/dialog'
 import { StatLabel, StatRoot, StatValueText } from '@/components/ui/stat';
-import { useCartStore } from '@/store';
 import { Button } from '@/components/ui/button';
 import { EmptyState } from '@/components/ui/empty-state';
 import { LuShoppingCart } from 'react-icons/lu';
 import { ROUTES } from '@/global';
+import { useCart } from '@/hooks';
 
 const ShoppingCart: FC = () => {
-  const cart = useCartStore((state) => state.cart);
-  const remove = useCartStore((state) => state.remove);
-  const removeAll = useCartStore((state) => state.removeAll);
-  const increment = useCartStore((state) => state.increment);
-  const decrement = useCartStore((state) => state.decrement);
-
-  const isEmpty = useMemo(() => cart.length === 0, [cart]);
-  const total = useMemo(() => cart.reduce((acc: number, currentGuitar) => acc + (currentGuitar.price * currentGuitar.quantity), 0), [cart]);
+  const { cart, remove, removeAll, increment, decrement, isEmpty, total } = useCart();
 
   return (
     <DrawerRoot placement="end" size="lg">
