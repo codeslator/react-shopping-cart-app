@@ -35,13 +35,13 @@ To run this app, you must have installed Node 18 or major & NPM.
 
 This README has the instructions to install and execute this webapp. The first step is clone the repository from GitHub.
 ```
-https://github.com/codeslator/c.git
+https://github.com/codeslator/react-shopping-cart-app.git
 ```
 
 After clone the repository, you must to install all dependencies.
 
 ```
-cd https://github.com/codeslator/react-shopping-cart-app.git
+cd react-shopping-cart-app
 npm install
 ```
 
