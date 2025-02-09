@@ -1,5 +1,5 @@
 import { FC, Fragment } from 'react';
-import { IconButton, HStack, Box, Text, Image, Group, Separator, Link } from '@chakra-ui/react';
+import { IconButton, HStack, Box, Text, Image, Group, Separator, Link, Float } from '@chakra-ui/react';
 import { MdAdd, MdAddShoppingCart, MdRemove, MdDelete } from "react-icons/md";
 import {
   DrawerBackdrop,
@@ -24,6 +24,7 @@ import {
   DialogTrigger,
 } from '@/components/ui/dialog'
 import { StatLabel, StatRoot, StatValueText } from '@/components/ui/stat';
+import { Badge } from "@chakra-ui/react"
 import { Button } from '@/components/ui/button';
 import { EmptyState } from '@/components/ui/empty-state';
 import { LuShoppingCart } from 'react-icons/lu';
@@ -31,7 +32,7 @@ import { ROUTES } from '@/global';
 import { useCart } from '@/hooks';
 
 const ShoppingCart: FC = () => {
-  const { cart, remove, removeAll, increment, decrement, isEmpty, total } = useCart();
+  const { cart, remove, removeAll, increment, decrement, isEmpty, total, count } = useCart();
 
   return (
     <DrawerRoot placement="end" size="lg">
@@ -45,6 +46,11 @@ const ShoppingCart: FC = () => {
           mr={4}
         >
           <MdAddShoppingCart />
+          {!isEmpty && (
+            <Float placement="top-end" offsetX="1" offsetY="1">
+              <Badge variant="surface">{count}</Badge>
+            </Float>
+          )}
         </IconButton>
       </DrawerTrigger>
       <DrawerContent>

@@ -11,12 +11,13 @@ import { environment } from '@/global';
 
 const Hero: FC = () => {
   return (
-    <Container maxW="5xl">
+    <Container fluid>
       <Stack
-        textAlign="center"
-        align="center"
+        textAlign={{ base: 'left', md: 'center' }}
+        align={{ base: 'flex-start', md: 'center' }}
         gap={{ base: 8, md: 10 }}
-        py={{ base: 20, md: 28 }}>
+        py={{ base: 20, md: 28 }}
+      >
         <Heading
           fontWeight={600}
           fontSize={{ base: '3xl', sm: '4xl', md: '6xl' }}
@@ -27,9 +28,8 @@ const Hero: FC = () => {
           </Text>
         </Heading>
         <Text color="gray.500" maxW="3xl">
-          Never miss a meeting. Never be late for one too. Keep track of your meetings and
-          receive smart reminders in appropriate times. Read your smart “Daily Agenda”
-          every morning.
+          <Text as="span" color="white" fontWeight="bold">ShoppingCartApp</Text> from <Text as="span" color="white" fontWeight="bold">Juan Pablo de la Torre React + TypeScript</Text> Course.
+          This app was created with Vite + React 18 + TypeScript using Chakra UI to create UI and testing with Vitest + React Testing Library.
         </Text>
         <HStack>
           <Button colorPalette="teal" variant="outline" asChild>

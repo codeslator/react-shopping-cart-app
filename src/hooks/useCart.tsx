@@ -13,6 +13,7 @@ const useCart = () => {
 
   const isEmpty = useMemo(() => cart.length === 0, [cart]);
   const total = useMemo(() => cart.reduce((acc: number, currentGuitar) => acc + (currentGuitar.price * currentGuitar.quantity), 0), [cart]);
+  const count = useMemo(() => cart.reduce((acc: number, currentGuitar) => acc + currentGuitar.quantity, 0), [cart]);
 
   return {
     cart,
@@ -23,7 +24,8 @@ const useCart = () => {
     decrement,
     isEmpty,
     total,
-    rating
+    rating,
+    count
   };
 };
 
