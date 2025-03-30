@@ -26,17 +26,25 @@ const Footer: FC = () => {
           <Link variant="plain" colorPalette="teal" href={environment.CODESLATOR_URL} target="_blank">CodeslatorDev</Link>. All rights reserved
         </Text>
         <HStack>
-          <IconButton colorPalette="teal" variant="outline" aria-label="Facebook">
-            <FaFacebook />
+          <IconButton colorPalette="teal" variant="outline" aria-label="Facebook" asChild>
+            <a href="https://www.facebook.com/codeslator" target="_blank">
+              <FaFacebook />
+            </a>
           </IconButton>
-          <IconButton colorPalette="teal" variant="outline" aria-label="Instagram">
-            <FaInstagram />
+          <IconButton colorPalette="teal" variant="outline" aria-label="Instagram" asChild>
+            <a href="https://www.instagram.com/codeslator" target="_blank">
+              <FaInstagram />
+            </a>
           </IconButton>
           <IconButton colorPalette="teal" variant="outline" aria-label="LinkedIn">
-            <FaLinkedin />
+            <a href="https://www.linkedin.com/in/andres-melendez-dev" target="_blank">
+              <FaLinkedin />
+            </a>
           </IconButton>
           <IconButton colorPalette="teal" variant="outline" aria-label="GitHub">
-            <FaGithub />
+            <a href="https://github.com/codeslator" target="_blank">
+              <FaGithub />
+            </a>
           </IconButton>
         </HStack>
       </Box>

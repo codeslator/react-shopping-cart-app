@@ -39,7 +39,7 @@ const OrderDetailsCard: FC = () => {
               <Table.Row key={id}>
                 <Table.Cell>Guitar {name}</Table.Cell>
                 <Table.Cell>{quantity}</Table.Cell>
-                <Table.Cell textAlign="end">${price}</Table.Cell>
+                <Table.Cell textAlign="end">${price * quantity}</Table.Cell>
               </Table.Row>
             ))}
           </Table.Body>
